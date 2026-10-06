@@ -157,9 +157,10 @@ const THEMES = {
   oasis:   {deco:"<b>🏝️ Оазис</b> — фирменный стиль VapeOasis"},
   glacier: {deco:"<b class='shimmer'>❄️ Ледник</b> — свежо и красиво 🏔️✨"},
   flame:   {deco:"<b>🔥 Пламя</b> — ярко и дерзко"},
-  forest:  {deco:"<b>🌲 Лес</b> — спокойно и зелено"}
+  forest:  {deco:"<b>🌲 Лес</b> — спокойно и зелено"},
+  neon:    {deco:"<b>🌌 Нуар</b> — фото на фоне и неоновый фиолет 💜"}
 };
-const FX = {oasis:[], glacier:["❄","❅","❆","💎","✨"], flame:["🔥","✨","💥"], forest:["🍃","🌿","💧"]};
+const FX = {oasis:[], glacier:["❄","❅","❆","💎","✨"], flame:["🔥","✨","💥"], forest:["🍃","🌿","💧"], neon:["✨","⚡","💜","🌟"]};
 function applyTheme(name, save=true){
   if(!THEMES[name]) name="oasis";
   document.documentElement.dataset.theme = name==="oasis"?"":name;
@@ -172,8 +173,8 @@ function applyTheme(name, save=true){
 }
 function spawnFx(name){
   const box = $("#fx"); box.innerHTML = "";
-  (FX[name]||[]).forEach(()=>{});
   const parts = FX[name]||[];
+  if(!parts.length) return; // без частиц — иначе в пустых темах появлялись "undefined"
   for(let i=0;i<22;i++){
     const s = document.createElement("span");
     s.textContent = parts[i%parts.length];
