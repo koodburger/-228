@@ -186,7 +186,7 @@ function spawnFx(name){
   }
 }
 document.querySelectorAll(".theme-btn").forEach(b=>b.onclick=()=>applyTheme(b.dataset.theme));
-applyTheme(localStorage.getItem("vo_theme")||"glacier", false);
+applyTheme(localStorage.getItem("vo_theme")||"neon", false);
 // pop-анимация на кнопке «В корзину»
 document.addEventListener("click", e=>{
   const b = e.target.closest?.(".add"); if(!b) return;
